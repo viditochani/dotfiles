@@ -1,22 +1,19 @@
-## J2 setup ##
-#export JPY=/Users/Vidit/Applications/j2/j.py
-#source /Users/Vidit/Applications/j2/j.sh
-
+##Environment Setup##
 # Z, the new J #
 export _Z_CMD=jd
-source /Users/Vidit/Applications/z.sh
+source $HOME/Applications/z.sh
 
 # AWS Config File #
-export AWS_CONFIG_FILE=/Users/Vidit/.aws
+export AWS_CONFIG_FILE=$HOME/.aws
 
 # JAVA HOME setup #
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-## Ruby GEM Home ##
-export GEM_HOME=/Users/Vidit/.gem
+# Ruby GEM Home #
+export GEM_HOME=$HOME/.gem
 
-## PATH settings ##
-export PATH=$PATH:/Users/Vidit/bin:$GEM_HOME/bin:/Users/Vidit/Dropbox/Classes/Spring2013/FinalProject/Sireum/apps/platform/scala/bin:/Users/Vidit/Applications/sbt/bin:/Volumes/android/WORKING_DIRECTORY/out/host/darwin-x86/bin:/Users/Vidit/Dropbox/Coding/map-reduce/emr-ruby:/Users/Vidit/Library/Python/2.7/bin
+# PATH settings #
+export PATH=$PATH:$HOME/bin:$GEM_HOME/bin:$HOME/Dropbox/Classes/Spring2013/FinalProject/Sireum/apps/platform/scala/bin:$HOME/Applications/sbt/bin:/Volumes/android/WORKING_DIRECTORY/out/host/darwin-x86/bin:$HOME/Dropbox/Coding/map-reduce/emr-ruby:$HOME/Library/Python/2.7/bin
 
 ## Set up Prompt ##
 [[ -s $HOME/.bash_prompt ]] && source $HOME/.bash_prompt
