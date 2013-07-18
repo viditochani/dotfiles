@@ -1,0 +1,6 @@
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+tab: menu-complete
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set blink-matching-paren on

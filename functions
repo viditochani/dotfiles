@@ -1,0 +1,82 @@
+## Functions ##
+###################################################################
+
+function scpcis() { scp vidit@cislinux.cis.ksu.edu:"$1" $2 ;}
+function mysql() { ssh -t cislinux 'mysql -p -h mysql.cis.ksu.edu';}
+function mtdroid() { hdiutil attach /Volumes/DATA/android.dmg.sparseimage -mountpoint /Volumes/android; }
+function undroid() { hdiutil unmount /Volumes/android; }
+function ipc() { ip | tr -d '\n' | pbcopy ; }
+
+# Dictionary
+function dict() { curl dict://dict.org/d:$1 ; }
+# Encode query, used by google function below
+function qenc() { echo -n $@ | perl -pe's/([^-_.~A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg'; }
+
+# Search google
+function google() { open -a "Google Chrome"  http://www.google.com/search?hl=en#q="`qenc $@`" ;}
+
+# Create a scp command with current directory
+function scpd() {
+  port=$(ipconfig getifaddr en0 | tr '.' ' ' | awk '{print "1682"$4}');
+  dir=$(pwd);
+  cip=$(ip);
+  if [[ -z $port ]]; then
+      echo -n "scp vidit@$cip:$dir/$1" | pbcopy ;
+  else
+      echo -n "scp -P $port vidit@$cip:$dir/$1" | pbcopy ;
+  fi
+}
+
+# Prints to remote server at cislinux
+function rprint() {
+  local printer_name="";
+  if [ $# -lt 1 -o $# -gt 2 ]; then
+    echo "Usage: print [printername] filename";
+  elif [ $# -eq 1 ]; then
+    echo "Print to default server.. n126";
+    ssh cislinux lpr -P n126-hp9050 < "$1";
+  else
+    if [ "$1" == "n126" ]; then
+      printer_name="n126-hp9050";
+    elif [ "$1" == "n16" ]; then
+      printer_name="n016-hp9050";
+    fi
+
+    if [ printer_name != "" ]; then
+      echo "Printing to server.. $printer_name";
+      ssh cislinux lpr -P "$printer_name" < "$2";
+    else
+      echo "Printing to server.. $1";
+      ssh cislinux lpr -P "$1" < "$2";
+    fi
+  fi;
+}
+  
+# Simple calculator
+function calc() {
+	local result="";
+  local input="";
+
+  # Check for options
+  if [ "$1" == "-o" ]; then
+    input="obase=8;${*:2}\n";
+  elif [ "$1" == "-x" ]; then
+    input="obase=16;${*:2}\n";
+  else
+    input="$*\n";
+  fi;
+
+  result="$(printf "scale=10;$input" | bc --mathlib | tr -d '\\\n')"
+	#                       └─ default (when `--mathlib` is used) is 20
+	#
+	if [[ "$result" == *.* ]]; then
+		# improve the output for decimal numbers
+		printf "$result" |
+		sed -e 's/^\./0./'        `# add "0" for cases like ".5"` \
+		    -e 's/^-\./-0./'      `# add "0" for cases like "-.5"`\
+		    -e 's/0*$//;s/\.$//'   # remove trailing zeros
+	else
+		printf "$result"
+	fi
+	printf "\n"
+}

@@ -1,0 +1,10 @@
+[user]
+	name = Vidit Ochani
+	email = vidit.ochani@gmail.com
+[core]
+	editor = vim
+	excludesfile = /Users/Vidit/.gitignore_global
+[merge]
+	tool = vimdiff
+[color]
+	ui = auto
