@@ -39,6 +39,7 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -63,6 +64,16 @@ Bundle 'Lokaltog/vim-easymotion'
 
 " Vim scala plugin
 Bundle 'derekwyatt/vim-scala'
+
+" Surround plugin
+Bundle 'tpope/vim-surround'
+
+" Repeat 
+Bundle 'tpope/vim-repeat'
+
+" vim airline - neat status line
+Bundle 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -430,3 +441,5 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+
