@@ -75,6 +75,17 @@ Bundle 'tpope/vim-repeat'
 Bundle 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 
+" Alternate files quickly 
+Bundle 'vim-scripts/a.vim'
+
+" Alternate files quickly 
+Bundle 'vim-scripts/bufexplorer.zip'
+
+"Pretty Line numbers
+Bundle 'myusuf3/numbers.vim'
+
+"Pretty Line numbers
+Bundle 'godlygeek/tabular'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -217,6 +228,15 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+" Setup Tabular
+let mapleader=','
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 
 
 """"""""""""""""""""""""""""""
