@@ -86,6 +86,10 @@ Bundle 'myusuf3/numbers.vim'
 
 "Pretty Line numbers
 Bundle 'godlygeek/tabular'
+
+"Pretty Line numbers
+Bundle 'ervandew/supertab'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
