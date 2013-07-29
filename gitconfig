@@ -7,6 +7,9 @@
 [merge]
 	tool = vimdiff
 [color]
+  diff = auto
+  status = auto
+  branch = auto
 	ui = auto
 [alias]
   st = status

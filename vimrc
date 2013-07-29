@@ -81,14 +81,36 @@ Bundle 'vim-scripts/a.vim'
 " Alternate files quickly 
 Bundle 'vim-scripts/bufexplorer.zip'
 
-"Pretty Line numbers
+" Pretty Line numbers
 Bundle 'myusuf3/numbers.vim'
 
-"Pretty Line numbers
+" Pretty Line numbers
 Bundle 'godlygeek/tabular'
+" Setup Tabular
+let mapleader=','
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 
-"Pretty Line numbers
+" SuperTab - Autocompletion on steroids
 Bundle 'ervandew/supertab'
+
+" Unite plugin
+Bundle 'Shougo/unite.vim'
+
+" Code comment
+Bundle 'tpope/vim-commentary'
+
+" Code tagbar
+Bundle 'majutsushi/tagbar'
+nmap <Leader>tt :TagbarToggle<CR>
+
+" NerdTreeAlways open
+Bundle 'jistr/vim-nerdtree-tabs'
+nmap <Leader>nt :NERDTreeTabsToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -232,15 +254,6 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
-" Setup Tabular
-let mapleader=','
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
 
 
 """"""""""""""""""""""""""""""

@@ -12,7 +12,6 @@ for name in *; do
     echo "Creating $target"
     ln -s "$PWD/$name" "$target"
   fi
-  echo "$name";
 done
 
 command -v git >/dev/null 2>&1 || ({ echo "Git required for plugins"; exit; })
