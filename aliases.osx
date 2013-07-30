@@ -1,0 +1,3 @@
+alias unmount='hdiutil unmount'
+alias update='brew update; brew upgrade; brew cleanup; gem update'
+alias vim='mvim -v'
