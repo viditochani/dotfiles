@@ -1,7 +1,7 @@
 #!/bin/sh
 
-BACKUP_DIR="$HOME/.backup"
-[[ ! -d "BACKUP_DIR" ]] && mkdir "$BACKUP_DIR"
+BACKUP_DIR="$HOME/.backup";
+if [ ! -d "$BACKUP_DIR" ]; then mkdir "$BACKUP_DIR"; fi
 for name in *; do
   target="$HOME/.$name"
   if [ -e "$target" ]; then
@@ -15,5 +15,7 @@ for name in *; do
 done
 
 command -v git >/dev/null 2>&1 || ({ echo "Git required for plugins"; exit; })
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim +BundleInstall +qall
+if [ ! -d ~/.vim/bundle/vundle ]; then
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+fi
+vim +PluginInstall +qall
