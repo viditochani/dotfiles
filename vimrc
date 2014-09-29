@@ -1,126 +1,25 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
-" Version: 
-"       5.0 - 29/05/12 15:43:36
-"
-" Blog_post: 
-"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-"
-" Raw_version: 
-"       http://amix.dk/vim/vimrc.txt
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-
-" The NERD Tree
-Bundle 'scrooloose/nerdtree'
-
-" ctrlp - A finder on steroids
-" Bundle 'kien/ctrlp.vim'
-
-" EasyMotion - Vim motions on speed
-Bundle 'Lokaltog/vim-easymotion'
-
-" Vim scala plugin
-Bundle 'derekwyatt/vim-scala'
-
-" Surround plugin
-Bundle 'tpope/vim-surround'
-
-" Repeat 
-Bundle 'tpope/vim-repeat'
-
-" vim airline - neat status line
-Bundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
-
-" Alternate files quickly 
-Bundle 'vim-scripts/a.vim'
-
-" Alternate files quickly 
-Bundle 'vim-scripts/bufexplorer.zip'
-
-" Pretty Line numbers
-Bundle 'myusuf3/numbers.vim'
-
-" Pretty Line numbers
-Bundle 'godlygeek/tabular'
-" Setup Tabular
-let mapleader=','
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+" install Vundle bundles
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
 endif
 
-" SuperTab - Autocompletion on steroids
-Bundle 'ervandew/supertab'
-
-" Unite plugin
-Bundle 'Shougo/unite.vim'
-
-" Code comment
-Bundle 'tpope/vim-commentary'
-
-" Code tagbar
-Bundle 'majutsushi/tagbar'
-nmap <Leader>tt :TagbarToggle<CR>
-
-" NerdTreeAlways open
-Bundle 'jistr/vim-nerdtree-tabs'
-nmap <Leader>nt :NERDTreeTabsToggle<CR>
+call vundle#end()
+filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=700
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -131,7 +30,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-" nmap <leader>w :w!<cr>
+nmap <leader>w :w!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -196,6 +95,8 @@ set tm=500
 " Add a bit extra margin to the left
 set foldcolumn=1
 
+" Absolute line number when insert mode
+set nu
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -207,8 +108,6 @@ try
     colorscheme desert
 catch
 endtry
-
-set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -479,4 +378,16 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
+set list                                            " show trailing whitespace
+set listchars=tab:▸\ ,trail:▫
+set showcmd
+" in case you forgot to sudo
+cnoremap w!! %!sudo tee > /dev/null %
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" if executable('ag')
+"   " Use Ag over Grep
+"   set grepprg=ag\ --nogroup\ --nocolor
 
+"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" endif

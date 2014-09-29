@@ -1,0 +1,44 @@
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/a.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-commentary'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'bling/vim-airline'
+Plugin 'godlygeek/tabular'
+Plugin 'majutsushi/tagbar'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'rking/ag.vim'
+
+""""" Plugin settings
+let mapleader=','
+
+" Airline
+let g:airline_powerline_fonts               = 2 "Enable powerline fonts
+let g:airline#extensions#bufferline#enabled = 1 "Enable buffer line
+let g:airline#extensions#tagbar#enabled     = 1 "Enable tagbar integration
+let g:airline#extensions#tabline#enabled    = 1
+
+" Tabular
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
+" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,xhtml EmmetInstall
+
+" NerdTree
+let NERDTreeIgnore=['\.o$', '\~$']
+nmap <Leader>nt :NERDTreeTabsToggle<CR>
+
+" Others
+nmap <Leader>tt :TagbarToggle<CR>
