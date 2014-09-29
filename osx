@@ -1,0 +1,11 @@
+#### Exports ####
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Link Homebrew casks in `/Applications` rather than `~/Applications`
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications";
+
+
+#### Aliases ####
+alias unmount='hdiutil unmount'
+alias vim='mvim -v'
+alias wtgl='networksetup -setairportpower en0 off && networksetup -setairportpower en0 on'

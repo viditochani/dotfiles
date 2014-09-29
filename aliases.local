@@ -1,8 +1,0 @@
-# Sireum stuff
-alias sireum='/Users/Vidit/Dropbox/Classes/Spring2013/FinalProject/Sireum/sireum'
-alias sle='sireum launch ec'
-# AWS stuff
-alias emr='elastic-mapreduce'
-alias awso='aws --profile ochaniv'
-alias s3o='s3cmd -c ~/.s3cfg2'
-alias emro='emr -c /Users/Vidit/Dropbox/Coding/map-reduce/emr-ruby/credentials2.json'
