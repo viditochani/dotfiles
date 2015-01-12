@@ -9,13 +9,31 @@
 	branch = auto
 	ui = auto
 [alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
+	st  = status
+	ci  = commit
+	ca  = commit --amend
+	br  = branch
+	co  = checkout
+	df  = diff
+	dc  = diff --cached
+	fl  = log -u
+	cp  = cherry-pick
+	cl  = clone
+; Reset Alias
+	r   = reset
+	r1  = reset HEAD^
+	rs  = reset --soft
+	rs1 = reset HEAD^ --soft
+	rh  = reset --hard
+	rh1 = reset HEAD^ --hard
+; Stash operations
+	sl  = stash list
+	sp  = stash pop
+	ss  = stash save
+	sh  = stash show
+; Pretty logs
 	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-	lg = !"git lg1"
+	lg  = !"git lg1"
 [push]
 	default = simple
